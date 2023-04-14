@@ -1,0 +1,241 @@
+Prefix: dc: <http://purl.org/dc/elements/1.1/>
+Prefix: owl: <http://www.w3.org/2002/07/owl#>
+Prefix: rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+Prefix: rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+Prefix: xml: <http://www.w3.org/XML/1998/namespace>
+Prefix: xsd: <http://www.w3.org/2001/XMLSchema#>
+
+
+
+Ontology: <http://www.semanticweb.org/MWWW/assignment1.owl>
+
+
+Datatype: xsd:boolean
+
+    
+Datatype: xsd:integer
+
+    
+ObjectProperty: <http://www.semanticweb.org/MWWW/assignment1/deathCount>
+
+    Domain: 
+        <http://www.semanticweb.org/MWWW/assignment1/Accident>
+    
+    
+ObjectProperty: <http://www.semanticweb.org/MWWW/assignment1/driverAlcoholResult>
+
+    Domain: 
+        <http://www.semanticweb.org/MWWW/assignment1/Accident>
+    
+    
+ObjectProperty: <http://www.semanticweb.org/MWWW/assignment1/hasAccident>
+
+    Domain: 
+        <http://www.semanticweb.org/MWWW/assignment1/Location>
+    
+    Range: 
+        <http://www.semanticweb.org/MWWW/assignment1/Accident>
+    
+    
+ObjectProperty: <http://www.semanticweb.org/MWWW/assignment1/hasAverageTemp>
+
+    Domain: 
+        <http://www.semanticweb.org/MWWW/assignment1/Weather>
+    
+    
+ObjectProperty: <http://www.semanticweb.org/MWWW/assignment1/hasDate>
+
+    Domain: 
+        <http://www.semanticweb.org/MWWW/assignment1/Accident>,
+        <http://www.semanticweb.org/MWWW/assignment1/Location>
+    
+    Range: 
+        <http://www.semanticweb.org/MWWW/assignment1/Date>
+    
+    
+ObjectProperty: <http://www.semanticweb.org/MWWW/assignment1/hasElectricCompany>
+
+    Domain: 
+        <http://www.semanticweb.org/MWWW/assignment1/Location>
+    
+    Range: 
+        <http://www.semanticweb.org/MWWW/assignment1/ElectricCompany>
+    
+    
+ObjectProperty: <http://www.semanticweb.org/MWWW/assignment1/hasMaxTemp>
+
+    Domain: 
+        <http://www.semanticweb.org/MWWW/assignment1/Weather>
+    
+    
+ObjectProperty: <http://www.semanticweb.org/MWWW/assignment1/hasMinTemp>
+
+    Domain: 
+        <http://www.semanticweb.org/MWWW/assignment1/Weather>
+    
+    
+ObjectProperty: <http://www.semanticweb.org/MWWW/assignment1/hasPrecipitation>
+
+    Domain: 
+        <http://www.semanticweb.org/MWWW/assignment1/Weather>
+    
+    
+ObjectProperty: <http://www.semanticweb.org/MWWW/assignment1/hasVisibility>
+
+    Domain: 
+        <http://www.semanticweb.org/MWWW/assignment1/Weather>
+    
+    
+ObjectProperty: <http://www.semanticweb.org/MWWW/assignment1/hasWeather>
+
+    Domain: 
+        <http://www.semanticweb.org/MWWW/assignment1/Location>
+    
+    Range: 
+        <http://www.semanticweb.org/MWWW/assignment1/Weather>
+    
+    
+ObjectProperty: <http://www.semanticweb.org/MWWW/assignment1/hasWindSpeed>
+
+    Domain: 
+        <http://www.semanticweb.org/MWWW/assignment1/Weather>
+    
+    
+ObjectProperty: <http://www.semanticweb.org/MWWW/assignment1/personAge>
+
+    Domain: 
+        <http://www.semanticweb.org/MWWW/assignment1/Accident>
+    
+    
+ObjectProperty: <http://www.semanticweb.org/MWWW/assignment1/producedElectricOutputOf>
+
+    Domain: 
+        <http://www.semanticweb.org/MWWW/assignment1/Location>
+    
+    Range: 
+        <http://www.semanticweb.org/MWWW/assignment1/ElectricCompany>
+    
+    
+ObjectProperty: <http://www.semanticweb.org/MWWW/assignment1/totalInjuryCount>
+
+    Domain: 
+        <http://www.semanticweb.org/MWWW/assignment1/Accident>
+    
+    
+ObjectProperty: <https://www.eia.gov/electricity/data/eia861m/netmeter/hasMonth>
+
+    SubPropertyOf: 
+        <http://www.semanticweb.org/MWWW/assignment1/hasDate>
+    
+    
+ObjectProperty: <https://www.eia.gov/electricity/data/eia861m/netmeter/hasYear>
+
+    SubPropertyOf: 
+        <http://www.semanticweb.org/MWWW/assignment1/hasDate>
+    
+    
+DataProperty: <http://www.semanticweb.org/MWWW/assignment1.owl/deathCount>
+
+    Domain: 
+        <http://www.semanticweb.org/MWWW/assignment1.owl/deathCount> some xsd:integer
+    
+    
+DataProperty: <http://www.semanticweb.org/MWWW/assignment1.owl/driverAlcoholResult>
+
+    Domain: 
+        <http://www.semanticweb.org/MWWW/assignment1.owl/driverAlcoholResult> some xsd:boolean
+    
+    
+DataProperty: <http://www.semanticweb.org/MWWW/assignment1.owl/personAge>
+
+    Domain: 
+        <http://www.semanticweb.org/MWWW/assignment1.owl/personAge> some xsd:integer
+    
+    
+DataProperty: <http://www.semanticweb.org/MWWW/assignment1.owl/totalInjuryCount>
+
+    Domain: 
+        <http://www.semanticweb.org/MWWW/assignment1.owl/totalInjuryCount> some xsd:integer
+    
+    
+Class: <http://www.semanticweb.org/MWWW/assignment1/Accident>
+
+    
+Class: <http://www.semanticweb.org/MWWW/assignment1/Date>
+
+    
+Class: <http://www.semanticweb.org/MWWW/assignment1/ElectricCompany>
+
+    
+Class: <http://www.semanticweb.org/MWWW/assignment1/Location>
+
+    
+Class: <http://www.semanticweb.org/MWWW/assignment1/Weather>
+
+    
+Class: <https://www.eia.gov/electricity/data/eia861m/netmeter/ExtremeWeather>
+
+    EquivalentTo: 
+        (<http://www.semanticweb.org/MWWW/assignment1/hasMaxTemp> min 90 owl:Thing) or (<http://www.semanticweb.org/MWWW/assignment1/hasPrecipitation> min 70 owl:Thing) or (<http://www.semanticweb.org/MWWW/assignment1/hasWindSpeed> min 45 owl:Thing) or (<http://www.semanticweb.org/MWWW/assignment1/hasMinTemp> max 30 owl:Thing) or (<http://www.semanticweb.org/MWWW/assignment1/hasVisibility> max 50 owl:Thing)
+    
+    SubClassOf: 
+        <http://www.semanticweb.org/MWWW/assignment1/Weather>
+    
+    
+Class: <https://www.eia.gov/electricity/data/eia861m/netmeter/FatalAccident>
+
+    EquivalentTo: 
+        <http://www.semanticweb.org/MWWW/assignment1/deathCount> min 1 owl:Thing
+    
+    SubClassOf: 
+        <http://www.semanticweb.org/MWWW/assignment1/Accident>
+    
+    DisjointWith: 
+        <https://www.eia.gov/electricity/data/eia861m/netmeter/NonFatalAccident>
+    
+    
+Class: <https://www.eia.gov/electricity/data/eia861m/netmeter/Month>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/MWWW/assignment1/Date>
+    
+    
+Class: <https://www.eia.gov/electricity/data/eia861m/netmeter/NonFatalAccident>
+
+    EquivalentTo: 
+        <http://www.semanticweb.org/MWWW/assignment1/deathCount> max 0 owl:Thing
+    
+    SubClassOf: 
+        <http://www.semanticweb.org/MWWW/assignment1/Accident>
+    
+    DisjointWith: 
+        <https://www.eia.gov/electricity/data/eia861m/netmeter/FatalAccident>
+    
+    
+Class: <https://www.eia.gov/electricity/data/eia861m/netmeter/Year>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/MWWW/assignment1/Date>
+    
+    
+Class: <https://www.eia.gov/electricity/data/eia861m/netmeter/producesElectricOutputOf>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/MWWW/assignment1/ElectricCompany>
+    
+    
+Class: owl:Thing
+
+    
+Individual: <http://www.semanticweb.org/MWWW/assignment1.owl/12345>
+
+    Types: 
+        <http://www.semanticweb.org/MWWW/assignment1/Accident>
+    
+    Facts:  
+     <http://www.semanticweb.org/MWWW/assignment1.owl/deathCount>  0,
+     <http://www.semanticweb.org/MWWW/assignment1.owl/driverAlcoholResult>  false,
+     <http://www.semanticweb.org/MWWW/assignment1.owl/personAge>  18,
+     <http://www.semanticweb.org/MWWW/assignment1.owl/totalInjuryCount>  1
+    
+    

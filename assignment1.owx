@@ -1,0 +1,332 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.semanticweb.org/MWWW/assignment1.owl"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.semanticweb.org/MWWW/assignment1.owl">
+    <Prefix name="dc" IRI="http://purl.org/dc/elements/1.1/"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="http://www.semanticweb.org/MWWW/assignment1/Accident"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.semanticweb.org/MWWW/assignment1/Date"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.semanticweb.org/MWWW/assignment1/ElectricCompany"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.semanticweb.org/MWWW/assignment1/Location"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.semanticweb.org/MWWW/assignment1/Weather"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="owl:Thing"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="https://www.eia.gov/electricity/data/eia861m/netmeter/ExtremeWeather"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="https://www.eia.gov/electricity/data/eia861m/netmeter/FatalAccident"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="https://www.eia.gov/electricity/data/eia861m/netmeter/Month"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="https://www.eia.gov/electricity/data/eia861m/netmeter/NonFatalAccident"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="https://www.eia.gov/electricity/data/eia861m/netmeter/Year"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="https://www.eia.gov/electricity/data/eia861m/netmeter/producesElectricOutputOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="http://www.semanticweb.org/MWWW/assignment1/deathCount"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="http://www.semanticweb.org/MWWW/assignment1/driverAlcoholResult"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="http://www.semanticweb.org/MWWW/assignment1/hasAccident"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="http://www.semanticweb.org/MWWW/assignment1/hasAverageTemp"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="http://www.semanticweb.org/MWWW/assignment1/hasDate"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="http://www.semanticweb.org/MWWW/assignment1/hasElectricCompany"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="http://www.semanticweb.org/MWWW/assignment1/hasMaxTemp"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="http://www.semanticweb.org/MWWW/assignment1/hasMinTemp"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="http://www.semanticweb.org/MWWW/assignment1/hasPrecipitation"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="http://www.semanticweb.org/MWWW/assignment1/hasVisibility"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="http://www.semanticweb.org/MWWW/assignment1/hasWeather"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="http://www.semanticweb.org/MWWW/assignment1/hasWindSpeed"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="http://www.semanticweb.org/MWWW/assignment1/personAge"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="http://www.semanticweb.org/MWWW/assignment1/producedElectricOutputOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="http://www.semanticweb.org/MWWW/assignment1/totalInjuryCount"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="https://www.eia.gov/electricity/data/eia861m/netmeter/hasMonth"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="https://www.eia.gov/electricity/data/eia861m/netmeter/hasYear"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="/deathCount"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="/driverAlcoholResult"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="/personAge"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="/totalInjuryCount"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="/12345"/>
+    </Declaration>
+    <Declaration>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </Declaration>
+    <Declaration>
+        <Datatype abbreviatedIRI="xsd:integer"/>
+    </Declaration>
+    <EquivalentClasses>
+        <Class IRI="https://www.eia.gov/electricity/data/eia861m/netmeter/ExtremeWeather"/>
+        <ObjectUnionOf>
+            <ObjectMinCardinality cardinality="90">
+                <ObjectProperty IRI="http://www.semanticweb.org/MWWW/assignment1/hasMaxTemp"/>
+            </ObjectMinCardinality>
+            <ObjectMinCardinality cardinality="70">
+                <ObjectProperty IRI="http://www.semanticweb.org/MWWW/assignment1/hasPrecipitation"/>
+            </ObjectMinCardinality>
+            <ObjectMinCardinality cardinality="45">
+                <ObjectProperty IRI="http://www.semanticweb.org/MWWW/assignment1/hasWindSpeed"/>
+            </ObjectMinCardinality>
+            <ObjectMaxCardinality cardinality="30">
+                <ObjectProperty IRI="http://www.semanticweb.org/MWWW/assignment1/hasMinTemp"/>
+            </ObjectMaxCardinality>
+            <ObjectMaxCardinality cardinality="50">
+                <ObjectProperty IRI="http://www.semanticweb.org/MWWW/assignment1/hasVisibility"/>
+            </ObjectMaxCardinality>
+        </ObjectUnionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="https://www.eia.gov/electricity/data/eia861m/netmeter/FatalAccident"/>
+        <ObjectMinCardinality cardinality="1">
+            <ObjectProperty IRI="http://www.semanticweb.org/MWWW/assignment1/deathCount"/>
+        </ObjectMinCardinality>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="https://www.eia.gov/electricity/data/eia861m/netmeter/NonFatalAccident"/>
+        <ObjectMaxCardinality cardinality="0">
+            <ObjectProperty IRI="http://www.semanticweb.org/MWWW/assignment1/deathCount"/>
+        </ObjectMaxCardinality>
+    </EquivalentClasses>
+    <SubClassOf>
+        <Class IRI="https://www.eia.gov/electricity/data/eia861m/netmeter/ExtremeWeather"/>
+        <Class IRI="http://www.semanticweb.org/MWWW/assignment1/Weather"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="https://www.eia.gov/electricity/data/eia861m/netmeter/FatalAccident"/>
+        <Class IRI="http://www.semanticweb.org/MWWW/assignment1/Accident"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="https://www.eia.gov/electricity/data/eia861m/netmeter/Month"/>
+        <Class IRI="http://www.semanticweb.org/MWWW/assignment1/Date"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="https://www.eia.gov/electricity/data/eia861m/netmeter/NonFatalAccident"/>
+        <Class IRI="http://www.semanticweb.org/MWWW/assignment1/Accident"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="https://www.eia.gov/electricity/data/eia861m/netmeter/Year"/>
+        <Class IRI="http://www.semanticweb.org/MWWW/assignment1/Date"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="https://www.eia.gov/electricity/data/eia861m/netmeter/producesElectricOutputOf"/>
+        <Class IRI="http://www.semanticweb.org/MWWW/assignment1/ElectricCompany"/>
+    </SubClassOf>
+    <DisjointClasses>
+        <Class IRI="https://www.eia.gov/electricity/data/eia861m/netmeter/FatalAccident"/>
+        <Class IRI="https://www.eia.gov/electricity/data/eia861m/netmeter/NonFatalAccident"/>
+    </DisjointClasses>
+    <ClassAssertion>
+        <Class IRI="http://www.semanticweb.org/MWWW/assignment1/Accident"/>
+        <NamedIndividual IRI="/12345"/>
+    </ClassAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="/deathCount"/>
+        <NamedIndividual IRI="/12345"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="/driverAlcoholResult"/>
+        <NamedIndividual IRI="/12345"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="/personAge"/>
+        <NamedIndividual IRI="/12345"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">18</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="/totalInjuryCount"/>
+        <NamedIndividual IRI="/12345"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1</Literal>
+    </DataPropertyAssertion>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="https://www.eia.gov/electricity/data/eia861m/netmeter/hasMonth"/>
+        <ObjectProperty IRI="http://www.semanticweb.org/MWWW/assignment1/hasDate"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="https://www.eia.gov/electricity/data/eia861m/netmeter/hasYear"/>
+        <ObjectProperty IRI="http://www.semanticweb.org/MWWW/assignment1/hasDate"/>
+    </SubObjectPropertyOf>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://www.semanticweb.org/MWWW/assignment1/deathCount"/>
+        <Class IRI="http://www.semanticweb.org/MWWW/assignment1/Accident"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://www.semanticweb.org/MWWW/assignment1/driverAlcoholResult"/>
+        <Class IRI="http://www.semanticweb.org/MWWW/assignment1/Accident"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://www.semanticweb.org/MWWW/assignment1/hasAccident"/>
+        <Class IRI="http://www.semanticweb.org/MWWW/assignment1/Location"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://www.semanticweb.org/MWWW/assignment1/hasAverageTemp"/>
+        <Class IRI="http://www.semanticweb.org/MWWW/assignment1/Weather"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://www.semanticweb.org/MWWW/assignment1/hasDate"/>
+        <Class IRI="http://www.semanticweb.org/MWWW/assignment1/Accident"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://www.semanticweb.org/MWWW/assignment1/hasDate"/>
+        <Class IRI="http://www.semanticweb.org/MWWW/assignment1/Location"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://www.semanticweb.org/MWWW/assignment1/hasElectricCompany"/>
+        <Class IRI="http://www.semanticweb.org/MWWW/assignment1/Location"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://www.semanticweb.org/MWWW/assignment1/hasMaxTemp"/>
+        <Class IRI="http://www.semanticweb.org/MWWW/assignment1/Weather"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://www.semanticweb.org/MWWW/assignment1/hasMinTemp"/>
+        <Class IRI="http://www.semanticweb.org/MWWW/assignment1/Weather"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://www.semanticweb.org/MWWW/assignment1/hasPrecipitation"/>
+        <Class IRI="http://www.semanticweb.org/MWWW/assignment1/Weather"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://www.semanticweb.org/MWWW/assignment1/hasVisibility"/>
+        <Class IRI="http://www.semanticweb.org/MWWW/assignment1/Weather"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://www.semanticweb.org/MWWW/assignment1/hasWeather"/>
+        <Class IRI="http://www.semanticweb.org/MWWW/assignment1/Location"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://www.semanticweb.org/MWWW/assignment1/hasWindSpeed"/>
+        <Class IRI="http://www.semanticweb.org/MWWW/assignment1/Weather"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://www.semanticweb.org/MWWW/assignment1/personAge"/>
+        <Class IRI="http://www.semanticweb.org/MWWW/assignment1/Accident"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://www.semanticweb.org/MWWW/assignment1/producedElectricOutputOf"/>
+        <Class IRI="http://www.semanticweb.org/MWWW/assignment1/Location"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://www.semanticweb.org/MWWW/assignment1/totalInjuryCount"/>
+        <Class IRI="http://www.semanticweb.org/MWWW/assignment1/Accident"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="http://www.semanticweb.org/MWWW/assignment1/hasAccident"/>
+        <Class IRI="http://www.semanticweb.org/MWWW/assignment1/Accident"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="http://www.semanticweb.org/MWWW/assignment1/hasDate"/>
+        <Class IRI="http://www.semanticweb.org/MWWW/assignment1/Date"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="http://www.semanticweb.org/MWWW/assignment1/hasElectricCompany"/>
+        <Class IRI="http://www.semanticweb.org/MWWW/assignment1/ElectricCompany"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="http://www.semanticweb.org/MWWW/assignment1/hasWeather"/>
+        <Class IRI="http://www.semanticweb.org/MWWW/assignment1/Weather"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="http://www.semanticweb.org/MWWW/assignment1/producedElectricOutputOf"/>
+        <Class IRI="http://www.semanticweb.org/MWWW/assignment1/ElectricCompany"/>
+    </ObjectPropertyRange>
+    <DataPropertyDomain>
+        <DataProperty IRI="/deathCount"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="/deathCount"/>
+            <Datatype abbreviatedIRI="xsd:integer"/>
+        </DataSomeValuesFrom>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="/driverAlcoholResult"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="/driverAlcoholResult"/>
+            <Datatype abbreviatedIRI="xsd:boolean"/>
+        </DataSomeValuesFrom>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="/personAge"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="/personAge"/>
+            <Datatype abbreviatedIRI="xsd:integer"/>
+        </DataSomeValuesFrom>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="/totalInjuryCount"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="/totalInjuryCount"/>
+            <Datatype abbreviatedIRI="xsd:integer"/>
+        </DataSomeValuesFrom>
+    </DataPropertyDomain>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 4.5.25.2023-02-15T19:15:49Z) https://github.com/owlcs/owlapi -->
+
