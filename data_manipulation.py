@@ -6,9 +6,13 @@ onto = get_ontology("onto.owl").load()
 
 class Accident(Thing):
     namespace = onto
-    def __init__(self, crashID, personAge):
+    def __init__(self, crashID, crashDeathCount, crashMonth, personAlcoholResult):
+        #Crash ID,Crash Death Count,Crash Month,Latitude,Longitude,Person Age,Person Alcohol Result
         self.crashID = crashID
-        self.personAge = personAge
+        self.crashDeathCount = crashDeathCount
+        self.crashMonth = crashMonth
+        self.personAge = []
+        self.personAlcoholResult = personAlcoholResult       
 
 class Location(Thing):
     namespace = onto
@@ -34,6 +38,11 @@ class Date(Thing):
         self.month = None
         self.year = None 
 
+class ElectricCompany(Thing):
+    namespace = onto
+    def __init__(self):
+        self.producesElectricOutputOf = None
+
 
 # Read the data from the CSV file
 # with open("C:/Users/susan/Downloads/mrworldwideweb/accidents_austin.csv", "r") as file:
@@ -44,28 +53,24 @@ class Date(Thing):
 #         #accident = Accident(crashID=row['crashID'])
 #         # Add the instance to the ontology
 #         #onto.add(accident)
-with open("C:/Users/susan/Downloads/mrworldwideweb/accidents_austin.csv", "r", encoding='utf-8-sig') as file:
+onto = get_ontology("onto.owl").load()
+
+with open("C:/Users/susan/Downloads/mrworldwideweb/AUSTIN.csv", "r", encoding='utf-8-sig') as file:
     reader = csv.DictReader(file)
     # Print the header row
     print(reader.fieldnames)
     d = {}
-
-    # #possible approach: create a dict-> id:Accident and then traverse dictionary to add to ontology
-    # for row in reader:
-    #     # Create a new instance of Accident for each row
-    #     #print(row['Person Age'], row['Person Death Count'], row['Person Total Injury Count'])
-    #     #accident = Accident(crashID=row['ï»¿"Crash ID"'], personAge=row["Person Age"])
-    #     #accident.personAge = row['Person Age']
-    #     #onto.add(accident)
-    #     crashID = row['Crash ID']
-    #     if crashID not in d:
-    #         d[crashID] = 1
-    #     else:
-    #         d[crashID] +=1
-            
-    # print(d)
-
-
-
+    #THIS IS JUST ONE DRIVER PER ACCIDENT
+    #personAge=row["Person Age"]
+    #Crash ID,Crash Death Count,Crash Month,Latitude,Longitude,Person Age,Person Alcohol Result
+    for row in reader:
+        if row["Person Age"] not in d:
+            accident = Accident(crashID=row["Crash ID"], crashDeathCount=row["Crash Death Count"], crashMonth=row["Crash Month"],personAlcoholResult=row["Person Alcohol Result"])
+            accident.personAge.append(row["Person Age"])
+            d[row["Crash ID"]] = accident
+            onto.add(accident)
+            onto.sync_reasoner()
+        
+    print(len(d))
 # Save the ontology
-#onto.save(file="path/to/save/ontology-test.owl")
+onto.save(file="path/to/save/ontology-test.owl")
