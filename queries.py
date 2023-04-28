@@ -40,6 +40,37 @@ def answer1(location):
     return model.coef_[0]
 
 
+def query2(location):
+    # Loading our ontology
+    onto_path.append("/Users/edwintomy/PycharmProjects/mrworldwideweb/")
+    onto = get_ontology("onto.owl").load()
+
+    second_query = list(default_world.sparql("""
+                       SELECT ?month (AVG(?precip) AS ?avgPrecip) (COUNT(?acc) AS ?numAcc) WHERE
+                       {?date rdf:type onto:Date.
+                        ?date onto:hasMonth ?month.
+                        ?date onto:hasLocation ?loc.
+                        ?loc onto:hasWeather ?weather.
+                        ?loc onto:hasName ??1.
+                        ?weather onto:hasPrecipitation ?precip.
+                        ?loc onto:hasAccident ?acc.} GROUP BY ?date
+                """, [location]))
+    return second_query
+
+def answer2(location):
+    query = query2(location)
+
+    sorted_query = sorted(query, key=lambda x: x[2], reverse=True)
+    sorted_query_rain = sorted(query, key=lambda x: x[1], reverse=True)
+
+    pos = 1
+    for i in range(len(sorted_query_rain)):
+        if sorted_query_rain[i][0] == sorted_query[0][0]:
+            break
+
+    return sorted_query[0][0], sorted_query[0][1], pos
+
+
 def main():
     # Loading our ontology
     onto_path.append("/Users/edwintomy/PycharmProjects/mrworldwideweb/")
@@ -83,5 +114,4 @@ def main():
 
 
 if __name__ == '__main__':
-    #main()
-    answer1('El_Paso')
+    answer2('El_Paso')
