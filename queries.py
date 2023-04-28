@@ -17,6 +17,7 @@ def main():
     # Loading our ontology
     onto_path.append("/Users/edwintomy/PycharmProjects/mrworldwideweb/")
     onto = get_ontology("onto.owl").load()
+
     #sync_reasoner(onto)
 
     # Printing basic information of our ontology
