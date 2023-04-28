@@ -85,15 +85,15 @@ def electricity_datasets():
             location1 = onto.Location('{}-'.format('San_Antonio') + date_name)
             location0.hasElectricCompany = company0
             location1.hasElectricCompany = company1
-            company0.hasElectricOutput = row['Total'] / 2
-            company1.hasElectricOutput = row['Total'] / 2
+            company0.producesElectricOutput = row['Total'] / 2
+            company1.producesElectricOutput = row['Total'] / 2
 
         else:
             full_company_name0 = company_name + date_name
             company0 = onto.CityElectricCompany(full_company_name0)
             location0 = onto.Location('{}-'.format(location_name) + date_name)
             location0.hasElectricCompany = company0
-            company0.hasElectricOutput = row['Total']
+            company0.producesElectricOutput = row['Total']
 
     onto.save()
 

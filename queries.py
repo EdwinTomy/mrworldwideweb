@@ -1,6 +1,8 @@
 from owlready2 import *
 from owlready2 import sync_reasoner
 from rdflib.plugins.sparql import prepareQuery
+import numpy as np
+from sklearn.linear_model import LinearRegression
 
 
 # Mr.World Wide Web Project
@@ -13,49 +15,35 @@ from rdflib.plugins.sparql import prepareQuery
 # Documentation to Owlready2: https://readthedocs.org/projects/owlready2/downloads/pdf/latest/
 
 
-def query1():
+def query1(location):
     # Loading our ontology
     onto_path.append("/Users/edwintomy/PycharmProjects/mrworldwideweb/")
     onto = get_ontology("onto.owl").load()
 
-    # sync_reasoner(onto)
-
-    # Printing basic information of our ontology
-    print("These are our classes:", list(onto.classes()))
-    print("These are our individuals:", list(onto.individuals()))
-    print("These are our object properties:", list(onto.object_properties()))
-    print("These are our data properties:", list(onto.data_properties()))
-
-    query = """
-                   SELECT (SUM(?elec) AS ?totalElec) (COUNT(?acc) AS ?numAcc) WHERE
+    first_query = list(default_world.sparql("""
+                   SELECT ?month (SUM(?elec) AS ?totalElec) (COUNT(?acc) AS ?numAcc) WHERE
                    {?date rdf:type onto:Date.
                     ?date onto:hasMonth ?month.
                     ?date onto:hasLocation ?loc.
                     ?loc onto:hasElectricCompany ?comp.
+                    ?loc onto:hasName ??1.
                     ?comp onto:producesElectricOutput ?elec.
                     ?loc onto:hasAccident ?acc.} GROUP BY ?date
-            """
+            """, [location]))
+    return first_query
 
-    first_query =list(default_world.sparql(query.format))
+def answer1(location):
+    query = query1(location)
+    model = LinearRegression()
+    model.fit([[i] for i in query[:][2]], query[:][1])
+    print(model.coef_)
+    return model.coef_[0]
 
-    print(first_query)
-
-    onto.close()
-def answer1():
-    pass
 
 def main():
     # Loading our ontology
     onto_path.append("/Users/edwintomy/PycharmProjects/mrworldwideweb/")
     onto = get_ontology("onto.owl").load()
-
-    #sync_reasoner(onto)
-
-    # Printing basic information of our ontology
-    print("These are our classes:", list(onto.classes()))
-    print("These are our individuals:", list(onto.individuals()))
-    print("These are our object properties:", list(onto.object_properties()))
-    print("These are our data properties:", list(onto.data_properties()))
 
     first_query = list(default_world.sparql("""
                SELECT (SUM(?elec) AS ?totalElec) (COUNT(?acc) AS ?numAcc) WHERE
@@ -92,8 +80,8 @@ def main():
                 ?loc onto:hasAccident ?acc.} GROUP BY ?date
         """))
     print(third_query)
-    onto.close()
 
 
 if __name__ == '__main__':
     #main()
+    answer1('El_Paso')

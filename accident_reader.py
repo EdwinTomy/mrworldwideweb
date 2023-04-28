@@ -17,6 +17,8 @@ import pandas as pd
 def accident_dataset(df_name, name, onto):
     df = pd.read_csv(df_name)
     for index, row in df.iterrows():
+        if index%20 != 0:
+            continue
         accident_str = 'accident_' + str(row['CrashID'])
         #print(row['CrashID'])
         accident = onto.Accident(accident_str)
