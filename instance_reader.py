@@ -28,7 +28,7 @@ def weather_dataset(onto, df):
         if row['tempmin'] < 0 or row['tempmax'] > 35 or row['precip'] > 10 or row['visibility'] < 5 or row['windspeed'] > 20:
             weather = onto.ExtremeWeather(weather_str)
         else:
-            weather = onto.Weather(weather_str)
+            weather = onto.NonExtremeWeather(weather_str)
 
         weather.hasMinTemp = row['tempmin']
         weather.hasMaxTemp = row['tempmax']

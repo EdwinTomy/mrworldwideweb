@@ -32,6 +32,7 @@ def query1(location):
             """, [location]))
     return first_query
 
+
 def answer1(location):
     query = query1(location)
     model = LinearRegression()
@@ -57,6 +58,7 @@ def query2(location):
                 """, [location]))
     return second_query
 
+
 def answer2(location):
     query = query2(location)
 
@@ -71,47 +73,49 @@ def answer2(location):
     return sorted_query[0][0], sorted_query[0][1], pos
 
 
-def main():
+def query3(location):
     # Loading our ontology
     onto_path.append("/Users/edwintomy/PycharmProjects/mrworldwideweb/")
     onto = get_ontology("onto.owl").load()
 
-    first_query = list(default_world.sparql("""
-               SELECT (SUM(?elec) AS ?totalElec) (COUNT(?acc) AS ?numAcc) WHERE
-               {?date rdf:type onto:Date.
-                ?date onto:hasMonth ?month.
-                ?date onto:hasLocation ?loc.
-                ?loc onto:hasElectricCompany ?comp.
-                ?comp onto:producesElectricOutput ?elec.
-                ?loc onto:hasAccident ?acc.} GROUP BY ?date
-        """))
-    print(first_query)
-
-    second_query = list(default_world.sparql("""
-                   SELECT (AVG(?precip) AS ?avgPrecip) (COUNT(?acc) AS ?numAcc) WHERE
-                   {?date rdf:type onto:Date.
-                    ?date onto:hasMonth ?month.
-                    ?date onto:hasLocation ?loc.
-                    ?loc onto:hasWeather ?weather.
-                    ?weather onto:hasPrecipitation ?precip.
-                    ?loc onto:hasAccident ?acc.} GROUP BY ?date
-            """))
-    print(second_query)
-
-    third_query = list(default_world.sparql("""
-               SELECT (SUM(?elec) AS ?totalElec) (COUNT(?acc) AS ?numAcc) (AVG(?precip) AS ?extremeWeather)
+    third_query0 = list(default_world.sparql("""
+               SELECT (COUNT(DISTINCT ?weather) AS ?total) (SUM(?elec) AS ?totalElec) (COUNT(?acc) AS ?numAcc) 
                WHERE
                {?date rdf:type onto:Date.
                 ?date onto:hasMonth ?month.
                 ?date onto:hasLocation ?loc.
+                ?loc onto:hasName ??1.
                 ?loc onto:hasElectricCompany ?comp.
                 ?comp onto:producesElectricOutput ?elec.
                 ?loc onto:hasWeather ?weather.
-                ?weather onto:hasPrecipitation ?precip.
-                ?loc onto:hasAccident ?acc.} GROUP BY ?date
-        """))
-    print(third_query)
+                ?weather rdf:type onto:ExtremeWeather.
+                ?loc onto:hasAccident ?acc.} 
+        """, [location]))
+
+    third_query1 = list(default_world.sparql("""
+               SELECT (COUNT(DISTINCT ?weather) AS ?total) (SUM(?elec) AS ?totalElec) (COUNT(?acc) AS ?numAcc) 
+               WHERE
+               {?date rdf:type onto:Date.
+                ?date onto:hasMonth ?month.
+                ?date onto:hasLocation ?loc.
+                ?loc onto:hasName ??1.
+                ?loc onto:hasElectricCompany ?comp.
+                ?comp onto:producesElectricOutput ?elec.
+                ?loc onto:hasWeather ?weather.
+                ?weather rdf:type onto:NonExtremeWeather.
+                ?loc onto:hasAccident ?acc.} 
+        """, [location]))
+
+    return [["Extreme Weather", third_query0[0][2] / third_query0[0][0], third_query0[0][1] / third_query0[0][0]],
+            ["NonExtreme Weather", third_query1[0][2] / third_query1[0][0], third_query1[0][1] / third_query1[0][0]]]
+
+
+def answer3(location):
+    q = query3(location)
+    return q[0][2]/q[1][2], q[0][1]/q[1][1], q[0][2]/q[1][2] / (q[0][1]/q[1][1])
+
+
 
 
 if __name__ == '__main__':
-    answer2('El_Paso')
+    print(answer3('El_Paso'))
