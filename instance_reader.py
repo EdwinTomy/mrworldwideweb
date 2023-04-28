@@ -57,42 +57,6 @@ def weather_datasets():
     onto.save()
 
 
-def accident_dataset(df, name, onto):
-    for index, row in df.iterrows():
-        accident_str = 'accident_' + str(row['Crash ID'])
-        accident = onto.Accident(accident_str)
-        accident.deathCount = row['Crash Death Count']
-        if row['Person Alcohol Result'] == 'No Data':
-            accident.driverAlcoholResult = True
-        else:
-            accident.driverAlcoholResult = True
-        accident.personAge = row['Person Age']
-
-        location = onto.Location('{}-2019-'.format(name) + str(row['Crash Month']))
-        location.hasAccident.append(accident)
-
-
-def accident_datasets():
-    # Loading our ontology
-    onto_path.append("/Users/edwintomy/PycharmProjects/mrworldwideweb/")
-    onto = get_ontology("onto.owl").load()
-
-    # Create an instance of the class
-    df_austin = pd.read_csv('data/austin_accidents.csv')
-    df_dallas = pd.read_csv('data/dallas_accidents.csv')
-    df_houston = pd.read_csv('data/houston_accidents.csv')
-    df_el_paso = pd.read_csv('data/el_paso_accidents.csv')
-    df_san_antonio = pd.read_csv('data/san_antonio_accidents.csv')
-
-    accident_dataset(df_austin, 'Austin', onto)
-    accident_dataset(df_dallas, 'Dallas', onto)
-    accident_dataset(df_houston, 'Houston', onto)
-    accident_dataset(df_el_paso, 'El_Paso', onto)
-    accident_dataset(df_san_antonio, 'San_Antonio', onto)
-
-    onto.save()
-
-
 def electricity_datasets():
     # Loading our ontology
     onto_path.append("/Users/edwintomy/PycharmProjects/mrworldwideweb/")
@@ -119,23 +83,22 @@ def electricity_datasets():
             company1 = onto.CityElectricCompany(full_company_name1)
             location0 = onto.Location('{}-'.format('Austin') + date_name)
             location1 = onto.Location('{}-'.format('San_Antonio') + date_name)
-            location0.hasCompany = company0
-            location1.hasCompany = company1
+            location0.hasElectricCompany = company0
+            location1.hasElectricCompany = company1
             company0.hasElectricOutput = row['Total'] / 2
             company1.hasElectricOutput = row['Total'] / 2
 
         else:
             full_company_name0 = company_name + date_name
             company0 = onto.CityElectricCompany(full_company_name0)
-            print("hi", full_company_name0)
             location0 = onto.Location('{}-'.format(location_name) + date_name)
-            location0.hasCompany = company0
+            location0.hasElectricCompany = company0
             company0.hasElectricOutput = row['Total']
 
     onto.save()
 
 
+
 if __name__ == '__main__':
     weather_datasets()
-    accident_datasets()
     electricity_datasets()

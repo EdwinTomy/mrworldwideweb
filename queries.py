@@ -13,6 +13,37 @@ from rdflib.plugins.sparql import prepareQuery
 # Documentation to Owlready2: https://readthedocs.org/projects/owlready2/downloads/pdf/latest/
 
 
+def query1():
+    # Loading our ontology
+    onto_path.append("/Users/edwintomy/PycharmProjects/mrworldwideweb/")
+    onto = get_ontology("onto.owl").load()
+
+    # sync_reasoner(onto)
+
+    # Printing basic information of our ontology
+    print("These are our classes:", list(onto.classes()))
+    print("These are our individuals:", list(onto.individuals()))
+    print("These are our object properties:", list(onto.object_properties()))
+    print("These are our data properties:", list(onto.data_properties()))
+
+    query = """
+                   SELECT (SUM(?elec) AS ?totalElec) (COUNT(?acc) AS ?numAcc) WHERE
+                   {?date rdf:type onto:Date.
+                    ?date onto:hasMonth ?month.
+                    ?date onto:hasLocation ?loc.
+                    ?loc onto:hasElectricCompany ?comp.
+                    ?comp onto:producesElectricOutput ?elec.
+                    ?loc onto:hasAccident ?acc.} GROUP BY ?date
+            """
+
+    first_query =list(default_world.sparql(query.format))
+
+    print(first_query)
+
+    onto.close()
+def answer1():
+    pass
+
 def main():
     # Loading our ontology
     onto_path.append("/Users/edwintomy/PycharmProjects/mrworldwideweb/")
@@ -61,7 +92,8 @@ def main():
                 ?loc onto:hasAccident ?acc.} GROUP BY ?date
         """))
     print(third_query)
+    onto.close()
 
 
 if __name__ == '__main__':
-    main()
+    #main()
