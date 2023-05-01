@@ -37,7 +37,6 @@ def answer1(location):
     query = query1(location)
     model = LinearRegression()
     model.fit([[i] for i in query[:][2]], query[:][1])
-    print(model.coef_)
     return model.coef_[0]
 
 
@@ -118,4 +117,14 @@ def answer3(location):
 
 
 if __name__ == '__main__':
-    print(answer3('El_Paso'))
+    names = ['El_Paso', 'Austin', 'Houston', 'Dallas', 'San_Antonio']
+    for name in names:
+        print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+        print(name)
+        print(query1(name))
+        print(answer1(name))
+        print(query2(name))
+        print(answer2(name))
+        print(query3(name))
+        print(answer3(name))
+
